@@ -245,7 +245,7 @@ var funcArray = [increment, increment, increment, increment, increment, incremen
 var count = -1; 
 function increment(){
 	count++;
-	console.log(count);
+	return count;
 }
 
 /*
