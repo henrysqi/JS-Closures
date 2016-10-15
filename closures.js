@@ -105,11 +105,18 @@ function is responsible for decrementing the value by one. You will need to use
 the module pattern to achieve this. */
 
 function counterFactory(value) {
-
+	var count = value;
   // Code here.
 
-
   return {
+		inc: function() {
+			count++;
+			return count;
+		},
+		dec: function() {
+			count--;
+			return count;
+		}
   }
 }
 
@@ -138,10 +145,12 @@ function motivation(firstname, lastname){
   var welcomeText = 'You\'re doing awesome, keep it up ';
 
   // code message function here.
-
+	function message(){
+		return welcomeText + firstname + " " + lastname + ".";
+	}
 
   //Uncommment this to return the value of your invoked message function
-  //return message();
+  return message();
 
 }
 
@@ -181,12 +190,15 @@ var module = (function() {
 
   return {
     // Code here.
+		publicMethod: function() {
+			return privateMethod();
+		}
   };
 
 })();
 
 // Uncomment this after you create your public method
-//   module.publicMethod();
+   module.publicMethod();
 
 
 
@@ -209,13 +221,13 @@ then 3, etc). Run this code in your console to see what the output is. */
 // To make this code work you will need to create a new scope for every iteration.
 function timeOutCounter() {
   for (var i = 0; i <= 5; i++) {
-    setTimeout(function() {
-      console.log(i);
-    }, i * 1000)
+    newScope(i)
   }
 
   function newScope(i) {
-    console.log(i)
+    setTimeout(function() {
+      console.log(i);
+    }, i * 1000)
   }
 }
 timeOutCounter();
@@ -229,7 +241,12 @@ timeOutCounter();
 	#PROBLEM-08
 \******************************************************************************/
 
-var funcArray = [];
+var funcArray = [increment, increment, increment, increment, increment, increment];
+var count = -1; 
+function increment(){
+	count++;
+	console.log(count);
+}
 
 /*
   Make the following code work
