@@ -241,11 +241,14 @@ timeOutCounter();
 	#PROBLEM-08
 \******************************************************************************/
 
-var funcArray = [increment, increment, increment, increment, increment, increment];
-var count = -1; 
-function increment(){
-	count++;
-	return count;
+var funcArray = [];
+for (var i = 0; i <= 5; i++){
+	funcArray.push(get(i));
+}
+function get(i){
+	return function(){
+		return i;
+	}
 }
 
 /*
